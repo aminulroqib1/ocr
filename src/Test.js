@@ -22,7 +22,7 @@ export const Test = () => {
 
   return (
     <div>
-      <button onClick={()=>initTesseractWorker()}>test</button>
+      <button href="/" onClick={()=>initTesseractWorker()} className="btn btn-success">TodVob OCR</button>
     </div>
   );
 };

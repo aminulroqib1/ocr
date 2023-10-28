@@ -106,37 +106,37 @@ export default function App() {
     setIsLoading(false);
     console.log(data.data.text);
     convert(data.data.text)
-    downloadPDF(worker);
+    // downloadPDF(worker);
     // await worker.terminate();
   };
 
-  const downloadPDF = async (worker) => {
-    const filename = "Celect-ocr.pdf";
-    const { data } = await worker.getPDF("CELECT OCR Result");
-    const blob = new Blob([new Uint8Array(data)], { type: "application/pdf" });
-    console.log(blob)
+  // const downloadPDF = async (worker) => {
+  //   const filename = "Celect-ocr.pdf";
+  //   const { data } = await worker.getPDF("CELECT OCR Result");
+  //   const blob = new Blob([new Uint8Array(data)], { type: "application/pdf" });
+  //   console.log(blob)
 
-    var fileURL = URL.createObjectURL(blob);
-    window.open(fileURL);
+  //   var fileURL = URL.createObjectURL(blob);
+  //   window.open(fileURL);
 
-    // return console.log("blob :- ", blob, data);
+  //   // return console.log("blob :- ", blob, data);
 
-    if (navigator.msSaveBlob) {
-      // IE 10+
-      navigator.msSaveBlob(blob, filename);
-    } else {
-      const link = document.createElement("a");
-      if (link.download !== undefined) {
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", filename);
-        link.style.visibility = "hidden";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    }
-  };
+  //   if (navigator.msSaveBlob) {
+  //     // IE 10+
+  //     navigator.msSaveBlob(blob, filename);
+  //   } else {
+  //     const link = document.createElement("a");
+  //     if (link.download !== undefined) {
+  //       const url = URL.createObjectURL(blob);
+  //       link.setAttribute("href", url);
+  //       link.setAttribute("download", filename);
+  //       link.style.visibility = "hidden";
+  //       document.body.appendChild(link);
+  //       link.click();
+  //       document.body.removeChild(link);
+  //     }
+  //   }
+  // };
 
   return (
     <div className="container">
@@ -157,8 +157,8 @@ export default function App() {
                 aria-label="Default select example"
               >
                 <option value="eng">English</option>
-                <option value="hin">Hindi</option>
-                <option value="urd">Urdu</option>
+                <option value="ben">Bangla</option>
+                {/* <option value="urd">Urdu</option> */}
               </select>
 
               <div className="col-12 mb-3">
@@ -192,7 +192,7 @@ export default function App() {
           {/* Text Area */}
           {!isLoading && text && (
             <>
-              <div className="textEditor">
+              {/* <div className="textEditor">
                 <Editor
                   editorState={editorState}
                   toolbarClassName="toolbar-class"
@@ -220,7 +220,7 @@ export default function App() {
                     history: { inDropdown: false },
                   }}
                 />
-              </div>
+              </div> */}
 
               <textarea
                 name=""
@@ -236,7 +236,7 @@ export default function App() {
 
               <div className="mt-3 mb-5">
                 <button
-                  onClick={() => downloadPDF()}
+                  
                   // onClick={handlePrint}
 
                   className="btn btn-primary"
